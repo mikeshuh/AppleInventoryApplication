@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MacbookSearchController implements Initializable {
+public class IPhoneSearchController implements Initializable {
 
     @FXML
     private Button backButton;
@@ -47,10 +47,11 @@ public class MacbookSearchController implements Initializable {
     @FXML
     private Label titleLabel;
 
-    private String[] model = {"Base", "Pro", "Air"};
-    private String[] color = {"Space Gray", "Gold", "Silver", "Midnight", "Starlight", "Space Black"};
-    private String[] size = {"13-inch", "14-inch", "15-inch", "16-inch"};
-    private String[] chip = {"M1", "M2", "M3", "M3 Pro", "M3 Max"};
+    private String[] model = {"Base", "Pro", "Pro Max"};
+    private String[] color = {"Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium", "Blue",
+            "Purple", "Yellow", "Red", "Pink", "Green","Midnight", "Starlight"};
+    private String[] size = {"6.1-inch", "6.7-inch"};
+    private String[] chip = {"A17", "A16", "A15"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
