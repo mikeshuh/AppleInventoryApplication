@@ -1,14 +1,29 @@
 package com.example.appleinventoryapp;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
-    private Label welcomeText;
+    private Button CreateAccountButton;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private Button LoginButton;
+
+    @FXML
+    private Label CreateMessageLabel;
+
+    @FXML
+    private Label LoginMessageLabel;
+
+    public void CreateAccountButtonOnAction(ActionEvent e){
+        CreateMessageLabel.setText("Fill Out All Fields");
+    }
+
+    public void LoginButtonOnAction(ActionEvent e){
+        LoginMessageLabel.setText("Fill Out All Fields");
     }
 }
