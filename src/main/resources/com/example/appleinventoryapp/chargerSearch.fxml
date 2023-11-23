@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.AirPodSearchController">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.ChargerSearchController">
     <children>
         <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
             <font>
@@ -18,7 +18,7 @@
                 <Font size="27.0" />
             </font>
         </Button>
-        <Label fx:id="titleLabel" layoutX="398.0" layoutY="57.0" text="AppleWatch Search">
+        <Label fx:id="titleLabel" layoutX="441.0" layoutY="58.0" text="Charger Search">
             <font>
                 <Font size="50.0" />
             </font>
@@ -28,19 +28,7 @@
                 <Font size="40.0" />
             </font>
         </Label>
-        <Label fx:id="colorLabel" layoutX="391.0" layoutY="266.0" text="Color">
-            <font>
-                <Font size="40.0" />
-            </font>
-        </Label>
-        <Label fx:id="chipLabel" layoutX="391.0" layoutY="356.0" text="Chip">
-            <font>
-                <Font size="40.0" />
-            </font>
-        </Label>
         <ChoiceBox fx:id="modelChoiceBox" layoutX="613.0" layoutY="176.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
-        <ChoiceBox fx:id="colorChoiceBox" layoutX="613.0" layoutY="266.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
-        <ChoiceBox fx:id="chipChoiceBox" layoutX="613.0" layoutY="356.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
         <Button fx:id="searchButton" layoutX="492.0" layoutY="558.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="208.0" style="-fx-background-radius: 15 15 15 15;" text="Search">
             <font>
                 <Font size="30.0" />
