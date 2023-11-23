@@ -45,10 +45,43 @@ public class LoginController {
                 CreatePasswordPasswordField.getText().isBlank() ||
                 CreateConfirmPasswordPasswordField.getText().isBlank()
         ){
-            CreateMessageLabel.setText("Fill Out All Fields");
+            CreateMessageLabel.setText("Fill out all fields");
         }
-        else{
+        else if(!CreatePasswordPasswordField.getText().equals(CreateConfirmPasswordPasswordField.getText())){
+                CreateMessageLabel.setText("Passwords do not match");
+        }
+        else {
+            createAccount();
+        }
+    }
 
+    public void createAccount(){
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String createAccount = "INSERT INTO Customer (Username, Password, FirstName, LastName) VALUES ('" +
+                CreateUsernameTextField.getText() + "', '" + CreatePasswordPasswordField.getText() + "', '" +
+                FirstNameTextField.getText() + "', '" + LastNameTextField.getText() + "');";
+
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery("SELECT Username From Customer;");
+
+            boolean unique = true;
+            while(queryResult.next()){
+                if(CreateUsernameTextField.getText().equals(queryResult.getString(1))){
+                    unique = false;
+                }
+            }
+            if(unique) {
+                statement.executeUpdate(createAccount);
+                CreateMessageLabel.setText("User has been registered");
+            }
+            else{
+                CreateMessageLabel.setText("Username is taken");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -61,15 +94,15 @@ public class LoginController {
         else if(LoginUsernameTextField.getText().isBlank() &&
                 !LoginPasswordPasswordField.getText().isBlank()
         ){
-            LoginMessageLabel.setText("Enter Username");
+            LoginMessageLabel.setText("Enter username");
         }
         else if(! LoginUsernameTextField.getText().isBlank() &&
                 LoginPasswordPasswordField.getText().isBlank()
         ){
-            LoginMessageLabel.setText("Enter Password");
+            LoginMessageLabel.setText("Enter password");
         }
         else{
-            LoginMessageLabel.setText("Enter Username & Password");
+            LoginMessageLabel.setText("Enter username & password");
         }
     }
 
@@ -88,7 +121,7 @@ public class LoginController {
                     LoginMessageLabel.setText("Welcome");
                 }
                 else{
-                    LoginMessageLabel.setText("Invalid Login. Please Try Again");
+                    LoginMessageLabel.setText("Invalid login. Please try again");
                 }
             }
         } catch(Exception e){
