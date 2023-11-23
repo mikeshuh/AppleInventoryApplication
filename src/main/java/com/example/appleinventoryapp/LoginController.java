@@ -2,11 +2,19 @@ package com.example.appleinventoryapp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
+
+import java.io.IOException;
 
 import java.lang.module.ModuleDescriptor;
 import java.sql.Connection;
@@ -14,6 +22,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class LoginController {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     @FXML
     private Button CreateAccountButton;
     @FXML
@@ -38,24 +50,22 @@ public class LoginController {
     @FXML
     private PasswordField LoginPasswordPasswordField;
 
-    public void CreateAccountButtonOnAction(ActionEvent e){
-        if(     FirstNameTextField.getText().isBlank() ||
+    public void CreateAccountButtonOnAction(ActionEvent e) {
+        if (FirstNameTextField.getText().isBlank() ||
                 LastNameTextField.getText().isBlank() ||
                 CreateUsernameTextField.getText().isBlank() ||
                 CreatePasswordPasswordField.getText().isBlank() ||
                 CreateConfirmPasswordPasswordField.getText().isBlank()
-        ){
+        ) {
             CreateMessageLabel.setText("Fill out all fields");
-        }
-        else if(!CreatePasswordPasswordField.getText().equals(CreateConfirmPasswordPasswordField.getText())){
-                CreateMessageLabel.setText("Passwords do not match");
-        }
-        else {
+        } else if (!CreatePasswordPasswordField.getText().equals(CreateConfirmPasswordPasswordField.getText())) {
+            CreateMessageLabel.setText("Passwords do not match");
+        } else {
             createAccount();
         }
     }
 
-    public void createAccount(){
+    public void createAccount() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -63,70 +73,72 @@ public class LoginController {
                 CreateUsernameTextField.getText() + "', '" + CreatePasswordPasswordField.getText() + "', '" +
                 FirstNameTextField.getText() + "', '" + LastNameTextField.getText() + "');";
 
-        try{
+        try {
             Statement statement = connectDB.createStatement();
             ResultSet queryResult = statement.executeQuery("SELECT Username From Customer;");
 
             boolean unique = true;
-            while(queryResult.next()){
-                if(CreateUsernameTextField.getText().equals(queryResult.getString(1))){
+            while (queryResult.next()) {
+                if (CreateUsernameTextField.getText().equals(queryResult.getString(1))) {
                     unique = false;
                 }
             }
-            if(unique) {
+            if (unique) {
                 statement.executeUpdate(createAccount);
                 CreateMessageLabel.setText("User has been registered");
-            }
-            else{
+            } else {
                 CreateMessageLabel.setText("Username is taken");
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void LoginButtonOnAction(ActionEvent e){
-        if(     !LoginUsernameTextField.getText().isBlank() &&
+    public void LoginButtonOnAction(ActionEvent e) {
+        if (!LoginUsernameTextField.getText().isBlank() &&
                 !LoginPasswordPasswordField.getText().isBlank()
-        ){
-            validateLogin();
-        }
-        else if(LoginUsernameTextField.getText().isBlank() &&
+        ) {
+            validateLogin(e);
+        } else if (LoginUsernameTextField.getText().isBlank() &&
                 !LoginPasswordPasswordField.getText().isBlank()
-        ){
+        ) {
             LoginMessageLabel.setText("Enter username");
-        }
-        else if(! LoginUsernameTextField.getText().isBlank() &&
+        } else if (!LoginUsernameTextField.getText().isBlank() &&
                 LoginPasswordPasswordField.getText().isBlank()
-        ){
+        ) {
             LoginMessageLabel.setText("Enter password");
-        }
-        else{
+        } else {
             LoginMessageLabel.setText("Enter username & password");
         }
     }
 
-    public void validateLogin(){
+    public void validateLogin(ActionEvent a) {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
         String verifyLogin = "SELECT count(1) FROM Customer WHERE Username = '" + LoginUsernameTextField.getText() + "' AND Password = '" + LoginPasswordPasswordField.getText() + "';";
 
-        try{
+        try {
             Statement statement = connectDB.createStatement();
             ResultSet queryResult = statement.executeQuery(verifyLogin);
 
-            while(queryResult.next()){
-                if(queryResult.getInt(1) == 1){
-                    LoginMessageLabel.setText("Welcome");
-                }
-                else{
+            while (queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
+                    switchToHomePage(a);
+                } else {
                     LoginMessageLabel.setText("Invalid login. Please try again");
                 }
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void switchToHomePage(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
