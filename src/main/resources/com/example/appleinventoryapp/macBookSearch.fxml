@@ -42,12 +42,12 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: clear;" text="Logout" textFill="RED">
+      <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="RED">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="53.0" layoutY="607.0" mnemonicParsing="false" style="-fx-background-radius: 15 15 15 15;" text="Back">
+      <Button fx:id="backButton" layoutX="53.0" layoutY="607.0" mnemonicParsing="false" onAction="#switchToHomePage" style="-fx-background-radius: 15 15 15 15;" text="Back">
          <font>
             <Font size="27.0" />
          </font>

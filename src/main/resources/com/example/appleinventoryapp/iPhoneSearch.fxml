@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.IPhoneSearchController">
    <children>
-      <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
+      <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="53.0" layoutY="607.0" mnemonicParsing="false" style="-fx-background-radius: 15 15 15 15;" text="Back">
+      <Button fx:id="backButton" layoutX="53.0" layoutY="607.0" mnemonicParsing="false" onAction="#switchToHomePage" style="-fx-background-radius: 15 15 15 15;" text="Back">
          <font>
             <Font size="27.0" />
          </font>
