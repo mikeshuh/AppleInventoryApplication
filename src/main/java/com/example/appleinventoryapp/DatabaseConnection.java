@@ -2,23 +2,20 @@ package com.example.appleinventoryapp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseConnection {
-    public Connection databaseLink;
 
-    public Connection getConnection(){
-        String databaseName = "AppleInventory";
-        String databaseUser = "root";
-        String databasePassword = "Origamiguy5!";
-        String url = "jdbc:mysql://localhost/" + databaseName;
+    private static final String URL = "jdbc:mysql://localhost:3306/";
+    private static final String USER = "root";
+    private static final String PASSWORD = "Origamiguy5!";
 
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        } catch(Exception e){
+    public static Connection getConnection(){
+        try {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-
-        return databaseLink;
     }
 }
