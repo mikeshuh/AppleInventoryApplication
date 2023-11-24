@@ -24,11 +24,11 @@ public class Main extends Application {
         String createDB = "CREATE DATABASE IF NOT EXISTS AppleInventory;";
         String customerTable =
                 "CREATE TABLE IF NOT EXISTS AppleInventory.Customer ("
-                + "CustomerID INT AUTO_INCREMENT PRIMARY KEY, "
-                + "Username VARCHAR(255) NOT NULL UNIQUE, "
-                + "Password VARCHAR(255) NOT NULL, "
-                + "FirstName VARCHAR(255) NOT NULL, "
-                + "LastName VARCHAR(255) NOT NULL"
+                + "    CustomerID INT AUTO_INCREMENT PRIMARY KEY, "
+                + "    Username VARCHAR(255) NOT NULL UNIQUE, "
+                + "    Password VARCHAR(255) NOT NULL, "
+                + "    FirstName VARCHAR(255) NOT NULL, "
+                + "    LastName VARCHAR(255) NOT NULL"
                 + ");";
         String productTable =
                 "CREATE TABLE IF NOT EXISTS AppleInventory.Product ("
@@ -184,7 +184,7 @@ public class Main extends Application {
                 "('MacBook Pro 16-inch M3 Max Space Black', 3499.00)," +
                 "('MacBook Pro 16-inch M3 Max Silver', 3499.00);";
         String insertMacBook =
-                "INSERT INTO AppleInventory.MacBook (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.MacBook (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
                 "(1, 'Air', '13 in', 'M1', 'Space Gray')," +
                 "(2, 'Air', '13 in', 'M1', 'Silver')," +
                 "(3, 'Air', '13 in', 'M1', 'Gold')," +
@@ -207,7 +207,7 @@ public class Main extends Application {
                 "(20, 'Pro', '16 in', 'M3 Max', 'Space Black')," +
                 "(21, 'Pro', '16 in', 'M3 Max', 'Silver');";
         String insertProductIPad =
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                 "('iPad 9th generation Space Gray', 329.00)," +
                 "('iPad 9th generation Silver', 329.00)," +
                 "('iPad 10th generation Silver', 449.00)," +
@@ -228,7 +228,7 @@ public class Main extends Application {
                 "('iPad Pro 6th generation 12.9-inch Space Gray', 1099.00)," +
                 "('iPad Pro 6th generation 12.9-inch Silver', 1099.00);";
         String insertIPad =
-                "INSERT INTO AppleInventory.iPad (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.iPad (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
                 "(22, 'Base', '10.2 in', 'A13', 'Space Gray')," +
                 "(23, 'Base', '10.2 in', 'A13', 'Silver')," +
                 "(24, 'Base', '10.9 in', 'A14', 'Silver')," +
@@ -249,7 +249,7 @@ public class Main extends Application {
                 "(39, 'Pro', '12.9 in', 'M2', 'Space Gray')," +
                 "(40, 'Pro', '12.9 in', 'M2', 'Silver');";
         String insertProductIPhone =
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                 "('iPhone 15 Pink', 799.00)," +
                 "('iPhone 15 Yellow', 799.00)," +
                 "('iPhone 15 Green', 799.00)," +
@@ -269,7 +269,7 @@ public class Main extends Application {
                 "('iPhone 15 Pro Max White Titanium', 1199.00)," +
                 "('iPhone 15 Pro Max Black Titanium', 1199.00);";
         String insertIPhone =
-                "INSERT INTO AppleInventory.iPhone (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.iPhone (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
                 "(41, 'Base', '6.1 in', 'A16', 'Pink')," +
                 "(42, 'Base', '6.1 in', 'A16', 'Yellow')," +
                 "(43, 'Base', '6.1 in', 'A16', 'Green')," +
@@ -289,7 +289,7 @@ public class Main extends Application {
                 "(57, 'Pro Max', '6.7 in', 'A17', 'White Titanium')," +
                 "(58, 'Pro Max', '6.7 in', 'A17', 'Black Titanium');";
         String insertProductAppleWatch =
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                 "('Apple Watch SE 40 mm Midnight (Aluminum)', 279.00)," +
                 "('Apple Watch SE 40 mm Starlight (Aluminum)', 279.00)," +
                 "('Apple Watch SE 40 mm Silver (Aluminum)', 279.00)," +
@@ -314,7 +314,7 @@ public class Main extends Application {
                 "('Apple Watch Series 9 45 mm Gold (Steel)', 749.00)," +
                 "('Apple Watch Ultra 2 49 mm Natural (Titanium)', 799.00);";
         String insertAppleWatch =
-                "INSERT INTO AppleInventory.AppleWatch (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.AppleWatch (ProductID, Model, ScreenSize, Chip, Color) VALUES" +
                 "(59, 'SE', '40 mm', 'S8', 'Midnight (Aluminum)')," +
                 "(60, 'SE', '40 mm', 'S8', 'Starlight (Aluminum)')," +
                 "(61, 'SE', '40 mm', 'S8', 'Silver (Aluminum)')," +
@@ -339,7 +339,7 @@ public class Main extends Application {
                 "(80, 'Series', '45 mm', 'S9', 'Gold (Steel)')," +
                 "(81, 'Ultra', '49 mm', 'S9', 'Natural (Titanium)');";
         String insertProductAirPods =
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                 "('AirPods 3rd Generation Lightning', 169.00)," +
                 "('AirPods 3rd Generation MagSafe', 179.00)," +
                 "('AirPods Pro 2nd Generation', 249.00)," +
@@ -349,7 +349,7 @@ public class Main extends Application {
                 "('AirPods Max Pink', 549.00)," +
                 "('AirPods Max Green', 549.00);";
         String insertAirPods =
-                "INSERT INTO AppleInventory.AirPods (ProductID, Model, Chip, Color) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.AirPods (ProductID, Model, Chip, Color) VALUES" +
                 "(82, 'Base Lightning', 'H1', 'White')," +
                 "(83, 'Base MagSafe', 'H1', 'White')," +
                 "(84, 'Pro', 'H2', 'White')," +
@@ -359,14 +359,14 @@ public class Main extends Application {
                 "(88, 'Max', 'H1', 'Pink')," +
                 "(89, 'Max', 'H1', 'Green');";
         String insertProductChargingCable =
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                 "('USB-C to Lightning Cable 1 m', 19.00)," +
                 "('USB-C to Lightning Cable 2 m', 29.00)," +
                 "('USB-C to USB-C Cable 1 m', 19.00)," +
                 "('USB-C to USB-C Cable 2 m', 29.00)," +
                 "('USB-C to MagSafe Charger 2 m', 49.00);";
         String insertChargingCable =
-                "INSERT INTO AppleInventory.ChargingCable (ProductID, Model, Length) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.ChargingCable (ProductID, Model, Length) VALUES" +
                 "(90, 'Lightning', '1 m')," +
                 "(91, 'Lightning', '2 m')," +
                 "(92, 'USB-C', '1 m')," +
