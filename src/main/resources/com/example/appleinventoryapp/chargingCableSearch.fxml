@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.ChargerSearchController">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.ChargingCableSearchController">
     <children>
         <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
             <font>
@@ -18,7 +18,7 @@
                 <Font size="27.0" />
             </font>
         </Button>
-        <Label fx:id="titleLabel" layoutX="441.0" layoutY="58.0" text="Charger Search">
+        <Label fx:id="titleLabel" layoutX="371.0" layoutY="57.0" text="Charging Cable Search">
             <font>
                 <Font size="50.0" />
             </font>
@@ -34,5 +34,11 @@
                 <Font size="30.0" />
             </font>
         </Button>
+      <Label fx:id="modelLabel1" layoutX="384.0" layoutY="278.0" text="Length">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="lengthChoiceBox" layoutX="613.0" layoutY="291.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
     </children>
 </AnchorPane>

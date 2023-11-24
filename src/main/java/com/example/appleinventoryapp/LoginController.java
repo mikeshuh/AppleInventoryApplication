@@ -66,16 +66,14 @@ public class LoginController {
     }
 
     public void createAccount() {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-        String createAccount = "INSERT INTO Customer (Username, Password, FirstName, LastName) VALUES ('" +
+        Connection connectDB = DatabaseConnection.getConnection();
+        String createAccount = "INSERT INTO AppleInventory.Customer (Username, Password, FirstName, LastName) VALUES ('" +
                 CreateUsernameTextField.getText() + "', '" + CreatePasswordPasswordField.getText() + "', '" +
                 FirstNameTextField.getText() + "', '" + LastNameTextField.getText() + "');";
 
         try {
             Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery("SELECT Username From Customer;");
+            ResultSet queryResult = statement.executeQuery("SELECT Username From AppleInventory.Customer;");
 
             boolean unique = true;
             while (queryResult.next()) {
@@ -113,10 +111,9 @@ public class LoginController {
     }
 
     public void validateLogin(ActionEvent a) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
+        Connection connectDB = DatabaseConnection.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM Customer WHERE Username = '" + LoginUsernameTextField.getText() + "' AND Password = '" + LoginPasswordPasswordField.getText() + "';";
+        String verifyLogin = "SELECT count(1) FROM AppleInventory.Customer WHERE Username = '" + LoginUsernameTextField.getText() + "' AND Password = '" + LoginPasswordPasswordField.getText() + "';";
 
         try {
             Statement statement = connectDB.createStatement();

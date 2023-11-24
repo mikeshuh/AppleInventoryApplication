@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChargerSearchController implements Initializable {
+public class ChargingCableSearchController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -29,17 +29,21 @@ public class ChargerSearchController implements Initializable {
     @FXML
     private ChoiceBox<String> modelChoiceBox;
     @FXML
+    private ChoiceBox<String> lengthChoiceBox;
+    @FXML
     private Label modelLabel;
     @FXML
     private Button searchButton;
     @FXML
     private Label titleLabel;
 
-    private String[] model = {"Lightning", "USB-C", "MagSafe"};
+    private String[] model = {"USB-C to Lightning", "USB-C to USB-C", "USB-C to MagSafe"};
+    private String[] length = {"1 m", "2 m"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
+        lengthChoiceBox.getItems().addAll(length);
     }
 
     public void switchToLoginPage (ActionEvent event) throws IOException {
