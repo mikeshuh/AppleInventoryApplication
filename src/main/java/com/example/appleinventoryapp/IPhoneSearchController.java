@@ -48,8 +48,8 @@ public class IPhoneSearchController implements Initializable {
     private Label titleLabel;
 
     private String[] model = {"Base", "Plus", "Pro", "Pro Max"};
-    private String[] color = {"Black Titanium", "Blue Titanium", "Natural Titanium", "White Titanium",
-            "Black", "Blue", "Green", "Pink", "Yellow"};
+    private String[] color = {"Black", "Blue", "Green", "Pink", "Yellow",
+            "Black Titanium", "Blue Titanium", "Natural Titanium", "White Titanium"};
     private String[] size = {"6.1 in", "6.7 in"};
     private String[] chip = {"A16", "A17"};
 

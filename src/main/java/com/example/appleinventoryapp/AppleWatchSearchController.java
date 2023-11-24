@@ -48,8 +48,8 @@ public class AppleWatchSearchController implements Initializable {
     private Label titleLabel;
 
     private String[] model = {"SE", "Series", "Ultra"};
-    private String[] color = {"Midnight (Aluminium)", "Pink (Aluminium)", "Red (Aluminium)",
-            "Silver (Aluminium)", "Starlight (Aluminium)", "Gold (Steel)", "Graphite (Steel)",
+    private String[] color = {"Midnight (Aluminum)", "Pink (Aluminum)", "Red (Aluminum)",
+            "Silver (Aluminum)", "Starlight (Aluminum)", "Gold (Steel)", "Graphite (Steel)",
             "Silver (Steel)", "Natural (Titanium)"};
     private String[] size = {"40 mm", "41 mm", "44 mm", "45 mm", "49 mm"};
     private String[] chip = {"S8", "S9"};

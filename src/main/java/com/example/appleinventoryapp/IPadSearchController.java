@@ -49,8 +49,8 @@ public class IPadSearchController implements Initializable {
 
     private String[] model = {"Base", "Air", "Mini", "Pro"};
     private String[] color = {"Blue", "Pink", "Purple", "Silver", "Yellow", "Starlight", "Space Gray"};
-    private String[] size = {"8.3 in", "10.9 in", "11 in", "12.9 in"};
-    private String[] chip = {"A14", "A15", "M1", "M2"};
+    private String[] size = {"8.3 in", "10.2", "10.9 in", "11 in", "12.9 in"};
+    private String[] chip = {"A13", "A14", "A15", "M1", "M2"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

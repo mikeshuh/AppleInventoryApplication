@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="ChargerButton" contentDisplay="CENTER" layoutX="850.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToChargerSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
+      <Button fx:id="ChargerButton" contentDisplay="CENTER" layoutX="850.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToChargingCableSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="127.0" fitWidth="142.0" preserveRatio="true">
                <Image url="@images/charger.png" />
@@ -91,7 +91,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="893.0" layoutY="648.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charger">
+      <Text layoutX="869.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charging Cable">
          <font>
             <Font size="16.0" />
          </font>
