@@ -43,7 +43,7 @@ public class AirPodSearchController implements Initializable {
     @FXML
     private Label titleLabel;
 
-    private String[] model = {"Base (Lightning)", "Base (MagSafe)", "Pro", "Max"};
+    private String[] model = {"Base Lightning", "Base MagSafe", "Pro", "Max"};
     private String[] color = {"White", "Green", "Pink", "Silver", "Sky Blue", "Space Gray"};
     private String[] chip = {"H1", "H2"};
 
