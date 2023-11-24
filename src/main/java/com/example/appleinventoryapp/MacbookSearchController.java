@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MacbookSearchController implements Initializable {
@@ -52,6 +53,8 @@ public class MacbookSearchController implements Initializable {
     private String[] size = {"13 in", "14 in", "15 in", "16 in"};
     private String[] chip = {"M1", "M2", "M3", "M3 Pro", "M3 Max"};
 
+    private ArrayList<String> search = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -74,5 +77,34 @@ public class MacbookSearchController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void SearchButtonOnAction(ActionEvent e){
+        if(modelChoiceBox.getValue() == null &&
+                sizeChoiceBox.getValue() == null &&
+                chipChoiceBox.getValue() == null &&
+                colorChoiceBox.getValue() == null
+        ){
+            System.out.println("All null");
+        }
+        if(modelChoiceBox.getValue() != null){
+            search.add(modelChoiceBox.getValue());
+        }
+        if(sizeChoiceBox.getValue() != null){
+            search.add(sizeChoiceBox.getValue());
+        }
+        if(chipChoiceBox.getValue() != null){
+            search.add(chipChoiceBox.getValue());
+        }
+        if(colorChoiceBox.getValue() != null){
+            search.add(colorChoiceBox.getValue());
+        }
+        if(modelChoiceBox.getValue() != null ||
+                sizeChoiceBox.getValue() != null ||
+                chipChoiceBox.getValue() != null ||
+                colorChoiceBox.getValue() != null){
+            System.out.println(search);
+        }
+        search.clear();
     }
 }
