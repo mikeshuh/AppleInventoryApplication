@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class IPhoneSearchController implements Initializable {
@@ -53,6 +54,8 @@ public class IPhoneSearchController implements Initializable {
     private String[] size = {"6.1 in", "6.7 in"};
     private String[] chip = {"A16", "A17"};
 
+    private ArrayList<String> search = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -75,5 +78,34 @@ public class IPhoneSearchController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void SearchButtonOnAction(ActionEvent e){
+        if(modelChoiceBox.getValue() == null &&
+                sizeChoiceBox.getValue() == null &&
+                chipChoiceBox.getValue() == null &&
+                colorChoiceBox.getValue() == null
+        ){
+            System.out.println("All null");
+        }
+        if(modelChoiceBox.getValue() != null){
+            search.add(modelChoiceBox.getValue());
+        }
+        if(sizeChoiceBox.getValue() != null){
+            search.add(sizeChoiceBox.getValue());
+        }
+        if(chipChoiceBox.getValue() != null){
+            search.add(chipChoiceBox.getValue());
+        }
+        if(colorChoiceBox.getValue() != null){
+            search.add(colorChoiceBox.getValue());
+        }
+        if(modelChoiceBox.getValue() != null ||
+                sizeChoiceBox.getValue() != null ||
+                chipChoiceBox.getValue() != null ||
+                colorChoiceBox.getValue() != null){
+            System.out.println(search);
+        }
+        search.clear();
     }
 }
