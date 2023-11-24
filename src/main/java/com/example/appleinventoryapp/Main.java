@@ -367,11 +367,11 @@ public class Main extends Application {
                 "('USB-C to MagSafe Charger 2 m', 49.00);";
         String insertChargingCable =
                 "INSERT IGNORE INTO AppleInventory.ChargingCable (ProductID, Model, Length) VALUES" +
-                "(90, 'Lightning', '1 m')," +
-                "(91, 'Lightning', '2 m')," +
-                "(92, 'USB-C', '1 m')," +
-                "(93, 'USB-C', '2 m')," +
-                "(94, 'MagSafe', '2 m');";
+                "(90, 'USB-C to Lightning', '1 m')," +
+                "(91, 'USB-C to Lightning', '2 m')," +
+                "(92, 'USB-C to USB-C', '1 m')," +
+                "(93, 'USB-C to USB-C', '2 m')," +
+                "(94, 'USB-C to MagSafe', '2 m');";
 
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {

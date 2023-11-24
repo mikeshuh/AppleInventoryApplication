@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppleWatchSearchController implements Initializable {
@@ -54,6 +55,8 @@ public class AppleWatchSearchController implements Initializable {
     private String[] size = {"40 mm", "41 mm", "44 mm", "45 mm", "49 mm"};
     private String[] chip = {"S8", "S9"};
 
+    private ArrayList<String> search = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -76,5 +79,34 @@ public class AppleWatchSearchController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void SearchButtonOnAction(ActionEvent e){
+        if(modelChoiceBox.getValue() == null &&
+                sizeChoiceBox.getValue() == null &&
+                chipChoiceBox.getValue() == null &&
+                colorChoiceBox.getValue() == null
+        ){
+            System.out.println("All null");
+        }
+        if(modelChoiceBox.getValue() != null){
+            search.add(modelChoiceBox.getValue());
+        }
+        if(sizeChoiceBox.getValue() != null){
+            search.add(sizeChoiceBox.getValue());
+        }
+        if(chipChoiceBox.getValue() != null){
+            search.add(chipChoiceBox.getValue());
+        }
+        if(colorChoiceBox.getValue() != null){
+            search.add(colorChoiceBox.getValue());
+        }
+        if(modelChoiceBox.getValue() != null ||
+                sizeChoiceBox.getValue() != null ||
+                chipChoiceBox.getValue() != null ||
+                colorChoiceBox.getValue() != null){
+            System.out.println(search);
+        }
+        search.clear();
     }
 }

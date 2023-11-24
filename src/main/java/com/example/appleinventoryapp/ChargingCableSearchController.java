@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChargingCableSearchController implements Initializable {
@@ -40,6 +41,8 @@ public class ChargingCableSearchController implements Initializable {
     private String[] model = {"USB-C to Lightning", "USB-C to USB-C", "USB-C to MagSafe"};
     private String[] length = {"1 m", "2 m"};
 
+    private ArrayList<String> search = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -60,5 +63,24 @@ public class ChargingCableSearchController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void SearchButtonOnAction(ActionEvent e){
+        if(modelChoiceBox.getValue() == null &&
+                lengthChoiceBox.getValue() == null
+        ){
+            System.out.println("All null");
+        }
+        if(modelChoiceBox.getValue() != null){
+            search.add(modelChoiceBox.getValue());
+        }
+        if(lengthChoiceBox.getValue() != null) {
+            search.add(lengthChoiceBox.getValue());
+        }
+        if(modelChoiceBox.getValue() != null ||
+                lengthChoiceBox.getValue() != null){
+            System.out.println(search);
+        }
+        search.clear();
     }
 }
