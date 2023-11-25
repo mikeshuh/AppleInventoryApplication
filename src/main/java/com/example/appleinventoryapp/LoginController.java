@@ -11,15 +11,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
 
 import java.io.IOException;
 
-import java.lang.module.ModuleDescriptor;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 
 public class LoginController {
     private Stage stage;
@@ -27,106 +23,104 @@ public class LoginController {
     private Parent root;
 
     @FXML
-    private Button CreateAccountButton;
+    private Button createAccountButton;
     @FXML
-    private Label CreateMessageLabel;
+    private Label createMessageLabel;
     @FXML
-    private TextField FirstNameTextField;
+    private TextField firstNameTextField;
     @FXML
-    private TextField LastNameTextField;
+    private TextField lastNameTextField;
     @FXML
-    private TextField CreateUsernameTextField;
+    private TextField createUsernameTextField;
     @FXML
-    private PasswordField CreatePasswordPasswordField;
+    private PasswordField createPasswordPasswordField;
     @FXML
-    private PasswordField CreateConfirmPasswordPasswordField;
+    private PasswordField createConfirmPasswordPasswordField;
 
     @FXML
-    private Button LoginButton;
+    private Button loginButton;
     @FXML
-    private Label LoginMessageLabel;
+    private Label loginMessageLabel;
     @FXML
-    private TextField LoginUsernameTextField;
+    private TextField loginUsernameTextField;
     @FXML
-    private PasswordField LoginPasswordPasswordField;
+    private PasswordField loginPasswordPasswordField;
 
-    public void CreateAccountButtonOnAction(ActionEvent e) {
-        if (FirstNameTextField.getText().isBlank() ||
-                LastNameTextField.getText().isBlank() ||
-                CreateUsernameTextField.getText().isBlank() ||
-                CreatePasswordPasswordField.getText().isBlank() ||
-                CreateConfirmPasswordPasswordField.getText().isBlank()
+    public void createAccountButtonOnAction() {
+        if (firstNameTextField.getText().isBlank() ||
+                lastNameTextField.getText().isBlank() ||
+                createUsernameTextField.getText().isBlank() ||
+                createPasswordPasswordField.getText().isBlank() ||
+                createConfirmPasswordPasswordField.getText().isBlank()
         ) {
-            CreateMessageLabel.setText("Fill out all fields");
-        } else if (!CreatePasswordPasswordField.getText().equals(CreateConfirmPasswordPasswordField.getText())) {
-            CreateMessageLabel.setText("Passwords do not match");
+            createMessageLabel.setText("Fill out all fields");
+        } else if (!createPasswordPasswordField.getText().equals(createConfirmPasswordPasswordField.getText())) {
+            createMessageLabel.setText("Passwords do not match");
         } else {
             createAccount();
         }
     }
 
     public void createAccount() {
-        Connection connectDB = DatabaseConnection.getConnection();
-        String createAccount = "INSERT INTO AppleInventory.Customer (Username, Password, FirstName, LastName) VALUES ('" +
-                CreateUsernameTextField.getText() + "', '" + CreatePasswordPasswordField.getText() + "', '" +
-                FirstNameTextField.getText() + "', '" + LastNameTextField.getText() + "');";
+        ResultSet queryResult = DatabaseConnection.query("SELECT Username From AppleInventory.Customer;");
 
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery("SELECT Username From AppleInventory.Customer;");
-
-            boolean unique = true;
+        boolean uniqueUsername = true;
+        try{
             while (queryResult.next()) {
-                if (CreateUsernameTextField.getText().equals(queryResult.getString(1))) {
-                    unique = false;
+                if (createUsernameTextField.getText().equals(queryResult.getString(1))) {
+                    uniqueUsername = false;
                 }
             }
-            if (unique) {
-                statement.executeUpdate(createAccount);
-                CreateMessageLabel.setText("User has been registered");
-            } else {
-                CreateMessageLabel.setText("Username is taken");
-            }
-        } catch (Exception e) {
+        } catch(SQLException e){
             e.printStackTrace();
+        }
+
+        if (uniqueUsername) {
+            DatabaseConnection.executeSQL(
+                    "INSERT INTO AppleInventory.Customer (Username, Password, FirstName, LastName) VALUES ('" +
+                            createUsernameTextField.getText() + "', '" + createPasswordPasswordField.getText() + "', '" +
+                            firstNameTextField.getText() + "', '" + lastNameTextField.getText() + "');"
+            );
+            createMessageLabel.setText("User has been registered");
+        } else {
+            createMessageLabel.setText("Username is taken");
         }
     }
 
-    public void LoginButtonOnAction(ActionEvent e) {
-        if (!LoginUsernameTextField.getText().isBlank() &&
-                !LoginPasswordPasswordField.getText().isBlank()
+    public void loginButtonOnAction(ActionEvent a) {
+        if (!loginUsernameTextField.getText().isBlank() &&
+                !loginPasswordPasswordField.getText().isBlank()
         ) {
-            validateLogin(e);
-        } else if (LoginUsernameTextField.getText().isBlank() &&
-                !LoginPasswordPasswordField.getText().isBlank()
+            validateLogin(a);
+        } else if (loginUsernameTextField.getText().isBlank() &&
+                !loginPasswordPasswordField.getText().isBlank()
         ) {
-            LoginMessageLabel.setText("Enter username");
-        } else if (!LoginUsernameTextField.getText().isBlank() &&
-                LoginPasswordPasswordField.getText().isBlank()
+            loginMessageLabel.setText("Enter username");
+        } else if (!loginUsernameTextField.getText().isBlank() &&
+                loginPasswordPasswordField.getText().isBlank()
         ) {
-            LoginMessageLabel.setText("Enter password");
+            loginMessageLabel.setText("Enter password");
         } else {
-            LoginMessageLabel.setText("Enter username & password");
+            loginMessageLabel.setText("Enter username & password");
         }
     }
 
     public void validateLogin(ActionEvent a) {
-        Connection connectDB = DatabaseConnection.getConnection();
-
-        String verifyLogin = "SELECT count(1) FROM AppleInventory.Customer WHERE Username = '" + LoginUsernameTextField.getText() + "' AND Password = '" + LoginPasswordPasswordField.getText() + "';";
+        ResultSet queryResult = DatabaseConnection.query(
+                "SELECT count(1) FROM AppleInventory.Customer WHERE Username = '" +
+                        loginUsernameTextField.getText() + "' AND Password = '" +
+                        loginPasswordPasswordField.getText() + "';"
+        );
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
-
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
                     switchToHomePage(a);
                 } else {
-                    LoginMessageLabel.setText("Invalid login. Please try again");
+                    loginMessageLabel.setText("Invalid login. Please try again");
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }

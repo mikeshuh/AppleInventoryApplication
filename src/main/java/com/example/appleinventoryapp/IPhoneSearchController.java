@@ -80,7 +80,7 @@ public class IPhoneSearchController implements Initializable {
         stage.show();
     }
 
-    public void SearchButtonOnAction(ActionEvent e){
+    public void searchButtonOnAction(ActionEvent a){
         if(modelChoiceBox.getValue() == null &&
                 sizeChoiceBox.getValue() == null &&
                 chipChoiceBox.getValue() == null &&

@@ -65,7 +65,7 @@ public class ChargingCableSearchController implements Initializable {
         stage.show();
     }
 
-    public void SearchButtonOnAction(ActionEvent e){
+    public void searchButtonOnAction(ActionEvent a){
         if(modelChoiceBox.getValue() == null &&
                 lengthChoiceBox.getValue() == null
         ){
