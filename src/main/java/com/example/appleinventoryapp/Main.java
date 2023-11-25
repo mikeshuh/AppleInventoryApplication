@@ -6,9 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
 
 public class Main extends Application {
     @Override
