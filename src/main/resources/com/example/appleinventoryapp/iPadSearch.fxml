@@ -47,7 +47,7 @@
       <ChoiceBox fx:id="colorChoiceBox" layoutX="613.0" layoutY="266.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
       <ChoiceBox fx:id="sizeChoiceBox" layoutX="613.0" layoutY="356.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
       <ChoiceBox fx:id="chipChoiceBox" layoutX="613.0" layoutY="446.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
-      <Button fx:id="searchButton" layoutX="492.0" layoutY="558.0" mnemonicParsing="false" onAction="#SearchButtonOnAction" prefHeight="58.0" prefWidth="208.0" style="-fx-background-radius: 15 15 15 15;" text="Search">
+      <Button fx:id="searchButton" layoutX="492.0" layoutY="558.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="58.0" prefWidth="208.0" style="-fx-background-radius: 15 15 15 15;" text="Search">
          <font>
             <Font size="30.0" />
          </font>
