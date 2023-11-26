@@ -46,6 +46,12 @@ public class LoginController {
     @FXML
     private PasswordField loginPasswordPasswordField;
 
+    private static int customerID;
+
+    public static int getCustomerID() {
+        return customerID;
+    }
+
     public void createAccountButtonOnAction() {
         if (firstNameTextField.getText().isBlank() ||
                 lastNameTextField.getText().isBlank() ||
@@ -107,7 +113,7 @@ public class LoginController {
 
     public void validateLogin(ActionEvent a) {
         ResultSet queryResult = DatabaseConnection.query(
-                "SELECT count(1) FROM AppleInventory.Customer WHERE Username = '" +
+                "SELECT count(1), CustomerID FROM AppleInventory.Customer WHERE Username = '" +
                         loginUsernameTextField.getText() + "' AND Password = '" +
                         loginPasswordPasswordField.getText() + "';"
         );
@@ -115,6 +121,7 @@ public class LoginController {
         try {
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
+                    customerID = queryResult.getInt(2);
                     switchToHomePage(a);
                 } else {
                     loginMessageLabel.setText("Invalid login. Please try again");

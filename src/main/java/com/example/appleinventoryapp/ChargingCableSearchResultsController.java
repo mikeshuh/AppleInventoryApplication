@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -59,6 +61,8 @@ public class ChargingCableSearchResultsController implements Initializable {
     private TableColumn<ProductSearchResultModel, String> productTableColumn;
     @FXML
     private TableColumn<ProductSearchResultModel, String> priceTableColumn;
+    @FXML
+    private TableColumn<ProductSearchResultModel, Void> addTableColumn;
 
     ObservableList<ProductSearchResultModel> chargingCableSearchModelObservableList = FXCollections.observableArrayList();
 
@@ -67,7 +71,6 @@ public class ChargingCableSearchResultsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource){
-        System.out.println(search.size());
         String queryStatement = "SELECT ProductID FROM AppleInventory.ChargingCable;";
 
         if(search.size() == 0){
@@ -101,11 +104,30 @@ public class ChargingCableSearchResultsController implements Initializable {
                 try{
                     while(rs.next()){
                         String queryProduct = rs.getString("ProductName");
-                        String queryPrice = rs.getString("Price");
+                        double queryPrice = rs.getDouble("Price");
                         chargingCableSearchModelObservableList.add(new ProductSearchResultModel(queryProduct, queryPrice));
                     }
                     productTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProductName"));
                     priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
+
+                    addTableColumn.setCellFactory(tc -> new TableCell<>() {
+                        private final Button btn = new Button("Add");
+
+                        @Override
+                        protected void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty) {
+                                setGraphic(null);
+                            } else {
+                                btn.setOnAction(event -> {
+                                    ProductSearchResultModel model = getTableView().getItems().get(getIndex());
+                                    ShoppingCartController.addCartProduct(model.getProductName());
+                                    ShoppingCartController.addCartProductPrices(model.getPrice());
+                                });
+                                setGraphic(btn);
+                            }
+                        }
+                    });
 
                     chargingCableTableView.setItems(chargingCableSearchModelObservableList);
 

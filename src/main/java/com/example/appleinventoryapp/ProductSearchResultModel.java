@@ -3,9 +3,9 @@ package com.example.appleinventoryapp;
 public class ProductSearchResultModel {
 
     private String productName;
-    private String price;
+    private double price;
 
-    public ProductSearchResultModel(String productName, String price) {
+    public ProductSearchResultModel(String productName, double price) {
         this.productName = productName;
         this.price = price;
     }
@@ -18,11 +18,11 @@ public class ProductSearchResultModel {
         this.productName = productName;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
