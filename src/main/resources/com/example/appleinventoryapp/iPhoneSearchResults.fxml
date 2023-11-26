@@ -6,21 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.iPhoneSearchResultsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.IPhoneSearchResultsController">
    <children>
-      <TableView fx:id="iPhoneTableView" layoutX="100.0" layoutY="110.0" prefHeight="483.0" prefWidth="1000.0" tableMenuButtonVisible="true">
+      <TableView fx:id="iPhoneTableView" layoutX="100.0" layoutY="110.0" prefHeight="483.0" prefWidth="1000.0">
         <columns>
-          <TableColumn fx:id="modelTableColumn" prefWidth="75.0" text="Model" />
-          <TableColumn fx:id="colorTableColumn" prefWidth="75.0" text="Color" />
-            <TableColumn fx:id="sizeTableColumn" prefWidth="75.0" text="Size" />
-            <TableColumn fx:id="chipTableColumn" prefWidth="75.0" text="Chip" />
+          <TableColumn fx:id="productTableColumn" prefWidth="75.0" text="Product" />
             <TableColumn fx:id="priceTableColumn" prefWidth="75.0" text="Prices" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="logoutButton" layoutX="35.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
+      <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" minWidth="126.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
          <font>
             <Font size="27.0" />
          </font>

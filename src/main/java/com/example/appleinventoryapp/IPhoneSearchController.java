@@ -54,7 +54,21 @@ public class IPhoneSearchController implements Initializable {
     private String[] size = {"6.1 in", "6.7 in"};
     private String[] chip = {"A16", "A17"};
 
-    private ArrayList<String> search = new ArrayList<>();
+    private static ArrayList<String> typeColumn = new ArrayList<>();
+    private static ArrayList<String> search = new ArrayList<>();
+
+    public static ArrayList<String> getTypeColumn(){
+        return new ArrayList<>(typeColumn);
+    }
+    public static ArrayList<String> getSearch(){
+        return new ArrayList<>(search);
+    }
+    public static void clearTypeColumn(){
+        typeColumn.clear();
+    }
+    public static void clearSearch(){
+        search.clear();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,7 +94,7 @@ public class IPhoneSearchController implements Initializable {
         stage.show();
     }
 
-    public void switchToiPhoneSearchResults (ActionEvent event) throws IOException {
+    public void switchToIPhoneSearchResults(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("iPhoneSearchResults.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -89,32 +103,22 @@ public class IPhoneSearchController implements Initializable {
     }
 
     public void searchButtonOnAction(ActionEvent a) throws IOException{
-        if(modelChoiceBox.getValue() == null &&
-                sizeChoiceBox.getValue() == null &&
-                chipChoiceBox.getValue() == null &&
-                colorChoiceBox.getValue() == null
-        ){
-            System.out.println("All null");
-        }
         if(modelChoiceBox.getValue() != null){
+            typeColumn.add("Model");
             search.add(modelChoiceBox.getValue());
         }
         if(sizeChoiceBox.getValue() != null){
+            typeColumn.add("ScreenSize");
             search.add(sizeChoiceBox.getValue());
         }
         if(chipChoiceBox.getValue() != null){
+            typeColumn.add("Chip");
             search.add(chipChoiceBox.getValue());
         }
         if(colorChoiceBox.getValue() != null){
+            typeColumn.add("Color");
             search.add(colorChoiceBox.getValue());
         }
-        if(modelChoiceBox.getValue() != null ||
-                sizeChoiceBox.getValue() != null ||
-                chipChoiceBox.getValue() != null ||
-                colorChoiceBox.getValue() != null){
-            System.out.println(search);
-        }
-        switchToiPhoneSearchResults(a);
-        search.clear();
+        switchToIPhoneSearchResults(a);
     }
 }
