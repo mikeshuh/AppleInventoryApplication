@@ -9,22 +9,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import java.net.URL;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import java.util.ArrayList;
-
-public class IPhoneSearchResultsController implements Initializable {
+public class IPadSearchResultsController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -33,8 +32,8 @@ public class IPhoneSearchResultsController implements Initializable {
     public void switchToLoginPage (ActionEvent event) throws IOException {
         search.clear();
         typeColumn.clear();
-        IPhoneSearchController.clearSearch();
-        IPhoneSearchController.clearTypeColumn();
+        IPadSearchController.clearSearch();
+        IPadSearchController.clearTypeColumn();
         root = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -42,12 +41,12 @@ public class IPhoneSearchResultsController implements Initializable {
         stage.show();
     }
 
-    public void switchToIPhoneSearchPage(ActionEvent event) throws IOException {
+    public void switchToIPadSearchPage (ActionEvent event) throws IOException {
         search.clear();
         typeColumn.clear();
-        IPhoneSearchController.clearSearch();
-        IPhoneSearchController.clearTypeColumn();
-        root = FXMLLoader.load(getClass().getResource("iPhoneSearch.fxml"));
+        IPadSearchController.clearSearch();
+        IPadSearchController.clearTypeColumn();
+        root = FXMLLoader.load(getClass().getResource("iPadSearch.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -55,40 +54,40 @@ public class IPhoneSearchResultsController implements Initializable {
     }
 
     @FXML
-    private TableView<ProductSearchResultModel> iPhoneTableView;
+    private TableView<ProductSearchResultModel> iPadTableView;
     @FXML
     private TableColumn<ProductSearchResultModel, String> productTableColumn;
     @FXML
     private TableColumn<ProductSearchResultModel, String> priceTableColumn;
 
-    ObservableList<ProductSearchResultModel> iPhoneSearchModelObservableList = FXCollections.observableArrayList();
+    ObservableList<ProductSearchResultModel> iPadSearchModelObservableList = FXCollections.observableArrayList();
 
-    private ArrayList<String> search = IPhoneSearchController.getSearch();
-    private ArrayList<String> typeColumn = IPhoneSearchController.getTypeColumn();
+    private ArrayList<String> search = IPadSearchController.getSearch();
+    private ArrayList<String> typeColumn = IPadSearchController.getTypeColumn();
 
     @Override
     public void initialize(URL url, ResourceBundle resource){
         System.out.println(search.size());
-        String queryStatement = "SELECT ProductID FROM AppleInventory.iPhone;";
+        String queryStatement = "SELECT ProductID FROM AppleInventory.iPad;";
 
         if(search.size() == 0){
-            queryStatement = "SELECT ProductID FROM AppleInventory.iPhone;";
+            queryStatement = "SELECT ProductID FROM AppleInventory.iPad;";
         }
         else if(search.size() == 1){
-            queryStatement = "SELECT ProductID FROM AppleInventory.iPhone WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "';";
+            queryStatement = "SELECT ProductID FROM AppleInventory.iPad WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "';";
         }
         else if(search.size() == 2){
-            queryStatement = "SELECT ProductID FROM AppleInventory.iPhone WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
+            queryStatement = "SELECT ProductID FROM AppleInventory.iPad WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
                     + typeColumn.get(1) + " = '" + search.get(1) + "';";
         }
         else if(search.size() == 3){
-            queryStatement = "SELECT ProductID FROM AppleInventory.iPhone WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
+            queryStatement = "SELECT ProductID FROM AppleInventory.iPad WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
                     + typeColumn.get(1) + " = '" + search.get(1) + "' AND "
                     + typeColumn.get(2) + " = '" + search.get(2) + "';";
 
         }
         else if(search.size() == 4){
-            queryStatement = "SELECT ProductID FROM AppleInventory.iPhone WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
+            queryStatement = "SELECT ProductID FROM AppleInventory.iPad WHERE " + typeColumn.get(0) + " = '" + search.get(0) + "' AND "
                     + typeColumn.get(1) + " = '" + search.get(1) + "' AND "
                     + typeColumn.get(2) + " = '" + search.get(2) + "' AND "
                     + typeColumn.get(3) + " = '" + search.get(3) + "';";
@@ -103,15 +102,15 @@ public class IPhoneSearchResultsController implements Initializable {
                     while(rs.next()){
                         String queryProduct = rs.getString("ProductName");
                         String queryPrice = rs.getString("Price");
-                        iPhoneSearchModelObservableList.add(new ProductSearchResultModel(queryProduct, queryPrice));
+                        iPadSearchModelObservableList.add(new ProductSearchResultModel(queryProduct, queryPrice));
                     }
                     productTableColumn.setCellValueFactory(new PropertyValueFactory<>("ProductName"));
                     priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
 
-                    iPhoneTableView.setItems(iPhoneSearchModelObservableList);
+                    iPadTableView.setItems(iPadSearchModelObservableList);
 
                 } catch(SQLException e){
-                    Logger.getLogger(IPhoneSearchResultsController.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(IPadSearchResultsController.class.getName()).log(Level.SEVERE, null, e);
                     e.printStackTrace();
                 }
             }

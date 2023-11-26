@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.IPhoneSearchResultsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.AppleWatchSearchResultsController">
    <children>
-      <TableView fx:id="iPhoneTableView" layoutX="100.0" layoutY="100.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="appleWatchTableView" layoutX="100.0" layoutY="110.0" prefHeight="483.0" prefWidth="1000.0">
         <columns>
           <TableColumn fx:id="productTableColumn" prefWidth="75.0" text="Product" />
             <TableColumn fx:id="priceTableColumn" prefWidth="75.0" text="Prices" />
@@ -23,12 +23,12 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#switchToIPhoneSearchPage" style="-fx-background-radius: 15 15 15 15;" text="Back">
+      <Button fx:id="backButton" layoutX="50.0" layoutY="625.0" mnemonicParsing="false" onAction="#switchToAppleWatchSearchPage" style="-fx-background-radius: 15 15 15 15;" text="Back">
          <font>
             <Font size="27.0" />
          </font>
       </Button>
-      <Label layoutX="460.0" layoutY="30.0" text="iPhone Search Results">
+      <Label layoutX="454.0" layoutY="30.0" text="Apple Watch Search Results">
          <font>
             <Font size="30.0" />
          </font>

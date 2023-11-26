@@ -53,7 +53,21 @@ public class IPadSearchController implements Initializable {
     private String[] size = {"8.3 in", "10.2", "10.9 in", "11 in", "12.9 in"};
     private String[] chip = {"A13", "A14", "A15", "M1", "M2"};
 
-    private ArrayList<String> search = new ArrayList<>();
+    private static ArrayList<String> typeColumn = new ArrayList<>();
+    private static ArrayList<String> search = new ArrayList<>();
+
+    public static ArrayList<String> getTypeColumn(){
+        return new ArrayList<>(typeColumn);
+    }
+    public static ArrayList<String> getSearch(){
+        return new ArrayList<>(search);
+    }
+    public static void clearTypeColumn(){
+        typeColumn.clear();
+    }
+    public static void clearSearch(){
+        search.clear();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,32 +93,31 @@ public class IPadSearchController implements Initializable {
         stage.show();
     }
 
-    public void searchButtonOnAction(ActionEvent a){
-        if(modelChoiceBox.getValue() == null &&
-                sizeChoiceBox.getValue() == null &&
-                chipChoiceBox.getValue() == null &&
-                colorChoiceBox.getValue() == null
-        ){
-            System.out.println("All null");
-        }
+    public void switchToIPadSearchResults(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("iPadSearchResults.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void searchButtonOnAction(ActionEvent a) throws IOException{
         if(modelChoiceBox.getValue() != null){
+            typeColumn.add("Model");
             search.add(modelChoiceBox.getValue());
         }
         if(sizeChoiceBox.getValue() != null){
+            typeColumn.add("ScreenSize");
             search.add(sizeChoiceBox.getValue());
         }
         if(chipChoiceBox.getValue() != null){
+            typeColumn.add("Chip");
             search.add(chipChoiceBox.getValue());
         }
         if(colorChoiceBox.getValue() != null){
+            typeColumn.add("Color");
             search.add(colorChoiceBox.getValue());
         }
-        if(modelChoiceBox.getValue() != null ||
-                sizeChoiceBox.getValue() != null ||
-                chipChoiceBox.getValue() != null ||
-                colorChoiceBox.getValue() != null){
-            System.out.println(search);
-        }
-        search.clear();
+        switchToIPadSearchResults(a);
     }
 }

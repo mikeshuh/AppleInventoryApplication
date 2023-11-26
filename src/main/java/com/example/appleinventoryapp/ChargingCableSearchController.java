@@ -41,8 +41,21 @@ public class ChargingCableSearchController implements Initializable {
     private String[] model = {"USB-C to Lightning", "USB-C to USB-C", "USB-C to MagSafe"};
     private String[] length = {"1 m", "2 m"};
 
-    private ArrayList<String> search = new ArrayList<>();
+    private static ArrayList<String> typeColumn = new ArrayList<>();
+    private static ArrayList<String> search = new ArrayList<>();
 
+    public static ArrayList<String> getTypeColumn(){
+        return new ArrayList<>(typeColumn);
+    }
+    public static ArrayList<String> getSearch(){
+        return new ArrayList<>(search);
+    }
+    public static void clearTypeColumn(){
+        typeColumn.clear();
+    }
+    public static void clearSearch(){
+        search.clear();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -65,22 +78,23 @@ public class ChargingCableSearchController implements Initializable {
         stage.show();
     }
 
-    public void searchButtonOnAction(ActionEvent a){
-        if(modelChoiceBox.getValue() == null &&
-                lengthChoiceBox.getValue() == null
-        ){
-            System.out.println("All null");
-        }
+    public void switchToChargingCableSearchResults(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("chargingCableSearchResults.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void searchButtonOnAction(ActionEvent a) throws IOException{
         if(modelChoiceBox.getValue() != null){
+            typeColumn.add("Model");
             search.add(modelChoiceBox.getValue());
         }
-        if(lengthChoiceBox.getValue() != null) {
+        if(lengthChoiceBox.getValue() != null){
+            typeColumn.add("Length");
             search.add(lengthChoiceBox.getValue());
         }
-        if(modelChoiceBox.getValue() != null ||
-                lengthChoiceBox.getValue() != null){
-            System.out.println(search);
-        }
-        search.clear();
+        switchToChargingCableSearchResults(a);
     }
 }

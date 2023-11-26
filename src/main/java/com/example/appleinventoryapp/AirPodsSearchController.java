@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MacbookSearchController implements Initializable {
+public class AirPodsSearchController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -42,24 +42,31 @@ public class MacbookSearchController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
-    private ChoiceBox<String> sizeChoiceBox;
-    @FXML
-    private Label sizeLabel;
-    @FXML
     private Label titleLabel;
 
-    private String[] model = {"Air", "Pro"};
-    private String[] color = {"Gold", "Midnight", "Silver", "Starlight", "Space Black", "Space Gray"};
-    private String[] size = {"13 in", "14 in", "15 in", "16 in"};
-    private String[] chip = {"M1", "M2", "M3", "M3 Pro", "M3 Max"};
+    private String[] model = {"Base Lightning", "Base MagSafe", "Pro", "Max"};
+    private String[] color = {"White", "Green", "Pink", "Silver", "Sky Blue", "Space Gray"};
+    private String[] chip = {"H1", "H2"};
 
-    private ArrayList<String> search = new ArrayList<>();
+    private static ArrayList<String> typeColumn = new ArrayList<>();
+    private static ArrayList<String> search = new ArrayList<>();
 
+    public static ArrayList<String> getTypeColumn(){
+        return new ArrayList<>(typeColumn);
+    }
+    public static ArrayList<String> getSearch(){
+        return new ArrayList<>(search);
+    }
+    public static void clearTypeColumn(){
+        typeColumn.clear();
+    }
+    public static void clearSearch(){
+        search.clear();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
         colorChoiceBox.getItems().addAll(color);
-        sizeChoiceBox.getItems().addAll(size);
         chipChoiceBox.getItems().addAll(chip);
     }
 
@@ -79,32 +86,27 @@ public class MacbookSearchController implements Initializable {
         stage.show();
     }
 
-    public void searchButtonOnAction(ActionEvent a){
-        if(modelChoiceBox.getValue() == null &&
-                sizeChoiceBox.getValue() == null &&
-                chipChoiceBox.getValue() == null &&
-                colorChoiceBox.getValue() == null
-        ){
-            System.out.println("All null");
-        }
+    public void switchToAirPodsSearchResults(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("airPodsSearchResults.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void searchButtonOnAction(ActionEvent a) throws IOException{
         if(modelChoiceBox.getValue() != null){
+            typeColumn.add("Model");
             search.add(modelChoiceBox.getValue());
         }
-        if(sizeChoiceBox.getValue() != null){
-            search.add(sizeChoiceBox.getValue());
-        }
         if(chipChoiceBox.getValue() != null){
+            typeColumn.add("Chip");
             search.add(chipChoiceBox.getValue());
         }
         if(colorChoiceBox.getValue() != null){
+            typeColumn.add("Color");
             search.add(colorChoiceBox.getValue());
         }
-        if(modelChoiceBox.getValue() != null ||
-                sizeChoiceBox.getValue() != null ||
-                chipChoiceBox.getValue() != null ||
-                colorChoiceBox.getValue() != null){
-            System.out.println(search);
-        }
-        search.clear();
+        switchToAirPodsSearchResults(a);
     }
 }
