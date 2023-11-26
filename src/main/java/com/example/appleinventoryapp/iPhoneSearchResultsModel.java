@@ -4,7 +4,7 @@ public class iPhoneSearchResultsModel {
 
     String Model;
     String Color;
-    String Size;
+    String ScreenSize;
     String Chip;
     String Price;
 
@@ -24,12 +24,12 @@ public class iPhoneSearchResultsModel {
         this.Color = color;
     }
 
-    public String getSize() {
-        return Size;
+    public String getScreenSize() {
+        return ScreenSize;
     }
 
-    public void setSize(String size) {
-        this.Size = size;
+    public void setScreenSize(String screenSize) {
+        this.ScreenSize = ScreenSize;
     }
 
     public String getChip() {
@@ -48,11 +48,11 @@ public class iPhoneSearchResultsModel {
         this.Price = price;
     }
 
-    public iPhoneSearchResultsModel(String Model, String Color, String Size,
+    public iPhoneSearchResultsModel(String Model, String Color, String ScreenSize,
                                     String Chip) {
         this.Model = Model;
         this.Color = Color;
-        this.Size = Size;
+        this.ScreenSize = ScreenSize;
         this.Chip = Chip;
         //this.Price = Price;
     }
