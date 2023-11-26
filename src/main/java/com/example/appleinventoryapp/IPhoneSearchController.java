@@ -80,7 +80,15 @@ public class IPhoneSearchController implements Initializable {
         stage.show();
     }
 
-    public void SearchButtonOnAction(ActionEvent e){
+    public void switchToiPhoneSearchResults (ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("iPhoneSearchResults.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void SearchButtonOnAction(ActionEvent e) throws IOException{
         if(modelChoiceBox.getValue() == null &&
                 sizeChoiceBox.getValue() == null &&
                 chipChoiceBox.getValue() == null &&
@@ -106,6 +114,7 @@ public class IPhoneSearchController implements Initializable {
                 colorChoiceBox.getValue() != null){
             System.out.println(search);
         }
+        switchToiPhoneSearchResults(e);
         search.clear();
     }
 }
