@@ -107,18 +107,20 @@ public class ShoppingCartController {
 
     @FXML
     private void handleCheckout(ActionEvent event) {
-        double totalPrice = cartProductPrices.stream().mapToDouble(Double::doubleValue).sum();
+        if(!cartProducts.isEmpty()){
+            double totalPrice = cartProductPrices.stream().mapToDouble(Double::doubleValue).sum();
 
-        int invoiceId = insertInvoiceAndGetId(totalPrice);
+            int invoiceId = insertInvoiceAndGetId(totalPrice);
 
-        for (String productName : cartProducts) {
-            int productId = getProductIdByName(productName);
-            insertIntoPurchasedProduct(invoiceId, productId);
+            for (String productName : cartProducts) {
+                int productId = getProductIdByName(productName);
+                insertIntoPurchasedProduct(invoiceId, productId);
+            }
+
+            cartProducts.clear();
+            cartProductPrices.clear();
+            shoppingCartTableView.getItems().clear();
         }
-
-        cartProducts.clear();
-        cartProductPrices.clear();
-        shoppingCartTableView.getItems().clear();
     }
 
     private int insertInvoiceAndGetId(double totalPrice) {
