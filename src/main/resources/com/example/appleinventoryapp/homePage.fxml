@@ -14,11 +14,6 @@
             <Image url="@images/appleLogo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="80.0" fitWidth="70.0" layoutX="1075.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/cartIcon.png" />
-         </image>
-      </ImageView>
       <Button layoutX="25.0" layoutY="25.0" maxWidth="126.0" minWidth="126.0" mnemonicParsing="false" onAction="#switchToLoginPage" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: none;" text="Logout" textFill="RED">
          <font>
             <Font size="27.0" />
@@ -96,5 +91,12 @@
             <Font size="16.0" />
          </font>
       </Text>
+      <Button fx:id="shoppingCartButton" layoutX="1070.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToShoppingCart" prefHeight="55.0" prefWidth="80.0" style="-fx-background-color: clear;">
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="80.0" onMouseClicked="#switchToShoppingCart" preserveRatio="true">
+               <Image url="@images/cartIcon.png" />
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
