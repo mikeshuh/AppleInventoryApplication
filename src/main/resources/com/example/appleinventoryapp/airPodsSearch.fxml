@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appleinventoryapp.AirPodSearchController">
     <children>
-        <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
+        <Button fx:id="logoutButton" layoutX="25.0" layoutY="25.0" maxWidth="126.0" minWidth="126.0" mnemonicParsing="false" onAction="#switchToLoginPage" style="-fx-background-color: clear;" text="Logout" textFill="#ff3434">
             <font>
                 <Font size="27.0" />
             </font>
@@ -41,7 +41,7 @@
         <ChoiceBox fx:id="modelChoiceBox" layoutX="613.0" layoutY="176.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
         <ChoiceBox fx:id="colorChoiceBox" layoutX="613.0" layoutY="266.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
         <ChoiceBox fx:id="chipChoiceBox" layoutX="613.0" layoutY="356.0" prefHeight="52.0" prefWidth="236.0" style="-fx-background-radius: 15 15 15 15;" />
-        <Button fx:id="searchButton" layoutX="492.0" layoutY="558.0" mnemonicParsing="false" onAction="#SearchButtonOnAction" prefHeight="58.0" prefWidth="208.0" style="-fx-background-radius: 15 15 15 15;" text="Search">
+        <Button fx:id="searchButton" layoutX="492.0" layoutY="558.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="58.0" prefWidth="208.0" style="-fx-background-radius: 15 15 15 15;" text="Search">
             <font>
                 <Font size="30.0" />
             </font>

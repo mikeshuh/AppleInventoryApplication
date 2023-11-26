@@ -73,7 +73,7 @@ public class AirPodSearchController implements Initializable {
         stage.show();
     }
 
-    public void SearchButtonOnAction(ActionEvent e){
+    public void searchButtonOnAction(ActionEvent a){
         if(modelChoiceBox.getValue() == null &&
                 chipChoiceBox.getValue() == null &&
                 colorChoiceBox.getValue() == null
