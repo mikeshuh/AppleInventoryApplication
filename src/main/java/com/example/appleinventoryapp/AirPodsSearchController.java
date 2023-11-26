@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AirPodSearchController implements Initializable {
+public class AirPodsSearchController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -48,8 +48,21 @@ public class AirPodSearchController implements Initializable {
     private String[] color = {"White", "Green", "Pink", "Silver", "Sky Blue", "Space Gray"};
     private String[] chip = {"H1", "H2"};
 
-    private ArrayList<String> search = new ArrayList<>();
+    private static ArrayList<String> typeColumn = new ArrayList<>();
+    private static ArrayList<String> search = new ArrayList<>();
 
+    public static ArrayList<String> getTypeColumn(){
+        return new ArrayList<>(typeColumn);
+    }
+    public static ArrayList<String> getSearch(){
+        return new ArrayList<>(search);
+    }
+    public static void clearTypeColumn(){
+        typeColumn.clear();
+    }
+    public static void clearSearch(){
+        search.clear();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelChoiceBox.getItems().addAll(model);
@@ -73,27 +86,27 @@ public class AirPodSearchController implements Initializable {
         stage.show();
     }
 
-    public void searchButtonOnAction(ActionEvent a){
-        if(modelChoiceBox.getValue() == null &&
-                chipChoiceBox.getValue() == null &&
-                colorChoiceBox.getValue() == null
-        ){
-            System.out.println("All null");
-        }
+    public void switchToAirPodsSearchResults(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("airPodsSearchResults.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void searchButtonOnAction(ActionEvent a) throws IOException{
         if(modelChoiceBox.getValue() != null){
+            typeColumn.add("Model");
             search.add(modelChoiceBox.getValue());
         }
         if(chipChoiceBox.getValue() != null){
+            typeColumn.add("Chip");
             search.add(chipChoiceBox.getValue());
         }
         if(colorChoiceBox.getValue() != null){
+            typeColumn.add("Color");
             search.add(colorChoiceBox.getValue());
         }
-        if(modelChoiceBox.getValue() != null ||
-                chipChoiceBox.getValue() != null ||
-                colorChoiceBox.getValue() != null){
-            System.out.println(search);
-        }
-        search.clear();
+        switchToAirPodsSearchResults(a);
     }
 }
