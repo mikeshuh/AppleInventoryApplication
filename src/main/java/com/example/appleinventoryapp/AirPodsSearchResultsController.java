@@ -30,6 +30,10 @@ public class AirPodsSearchResultsController implements Initializable {
     private Parent root;
 
     public void switchToLoginPage (ActionEvent event) throws IOException {
+        search.clear();
+        typeColumn.clear();
+        AirPodsSearchController.clearSearch();
+        AirPodsSearchController.clearTypeColumn();
         root = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
