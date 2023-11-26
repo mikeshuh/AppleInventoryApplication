@@ -88,7 +88,7 @@ public class IPhoneSearchController implements Initializable {
         stage.show();
     }
 
-    public void SearchButtonOnAction(ActionEvent e) throws IOException{
+    public void searchButtonOnAction(ActionEvent a) throws IOException{
         if(modelChoiceBox.getValue() == null &&
                 sizeChoiceBox.getValue() == null &&
                 chipChoiceBox.getValue() == null &&
@@ -114,7 +114,7 @@ public class IPhoneSearchController implements Initializable {
                 colorChoiceBox.getValue() != null){
             System.out.println(search);
         }
-        switchToiPhoneSearchResults(e);
+        switchToiPhoneSearchResults(a);
         search.clear();
     }
 }

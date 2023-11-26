@@ -2,12 +2,11 @@ package com.example.appleinventoryapp;
 
 public class iPhoneSearchResultsModel {
 
-    private String Model;
-    private String Color;
-    private String Size;
-    private String Chip;
-    private String Price;
-
+    String Model;
+    String Color;
+    String Size;
+    String Chip;
+    String Price;
 
     public String getModel() {
         return Model;
@@ -50,12 +49,12 @@ public class iPhoneSearchResultsModel {
     }
 
     public iPhoneSearchResultsModel(String Model, String Color, String Size,
-                                    String Chip, String Price) {
+                                    String Chip) {
         this.Model = Model;
         this.Color = Color;
         this.Size = Size;
         this.Chip = Chip;
-        this.Price = Price;
+        //this.Price = Price;
     }
 
 }

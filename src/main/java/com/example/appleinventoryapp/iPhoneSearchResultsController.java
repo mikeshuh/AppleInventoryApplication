@@ -63,10 +63,17 @@ public class iPhoneSearchResultsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
 
-        String iPhoneQuery = "Select * FROM iPhoneTable";
+        Connection connectDB = DatabaseConnection.getConnection();
+
+        if (connectDB == null) {
+            System.err.println("Error: Database connection is null.");
+            return;
+        }
+
+        String iPhoneQuery = "SELECT Model, Color, ScreenSize, Chip FROM iPhone";
+
+        String ignore = "SELECT" + " Model, Color, ScreenSize, " + "FROM iPhone";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -75,19 +82,18 @@ public class iPhoneSearchResultsController implements Initializable {
             while (queryOutput.next()) {
                 String queryModel = queryOutput.getString("Model");
                 String queryColor = queryOutput.getString("Color");
-                String querySize = queryOutput.getString("Size");
+                String querySize = queryOutput.getString("ScreenSize");
                 String queryChip = queryOutput.getString("Chip");
-                String queryPrice = queryOutput.getString("Price");
+                //String queryPrice = queryOutput.getString("Price");
 
-                iPhoneSearchModelObservableList.add(new iPhoneSearchResultsModel(queryModel, queryColor, querySize, queryChip, queryPrice));
-
+                iPhoneSearchModelObservableList.add(new iPhoneSearchResultsModel(queryModel, queryColor, querySize, queryChip));
             }
 
             modelTableColumn.setCellValueFactory(new PropertyValueFactory<>("Model"));
             colorTableColumn.setCellValueFactory(new PropertyValueFactory<>("Color"));
-            sizeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Size"));
+            sizeTableColumn.setCellValueFactory(new PropertyValueFactory<>("ScreenSize"));
             chipTableColumn.setCellValueFactory(new PropertyValueFactory<>("Chip"));
-            priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
+            //priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
 
             iPhoneTableView.setItems(iPhoneSearchModelObservableList);
 
