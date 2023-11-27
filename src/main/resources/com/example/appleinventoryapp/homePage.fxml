@@ -19,21 +19,21 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button fx:id="MacBookButton" contentDisplay="CENTER" layoutX="164.0" layoutY="204.0" mnemonicParsing="false" onAction="#switchToMacBookSearchPage" prefHeight="159.0" prefWidth="195.0" style="-fx-background-color: clear;">
+      <Button fx:id="MacBookButton" contentDisplay="CENTER" layoutX="156.0" layoutY="221.0" mnemonicParsing="false" onAction="#switchToMacBookSearchPage" prefHeight="159.0" prefWidth="195.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="159.0" fitWidth="195.0" preserveRatio="true">
                <Image url="@images/macbookButton.png" />
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="iPadButton" contentDisplay="CENTER" layoutX="528.0" layoutY="203.0" mnemonicParsing="false" onAction="#switchToIPadSearchPage" prefHeight="157.0" prefWidth="121.0" style="-fx-background-color: clear;">
+      <Button fx:id="iPadButton" contentDisplay="CENTER" layoutX="531.0" layoutY="203.0" mnemonicParsing="false" onAction="#switchToIPadSearchPage" prefHeight="157.0" prefWidth="121.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="157.0" fitWidth="121.0" preserveRatio="true">
                <Image url="@images/iPad.png" />
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="iPhoneButton" contentDisplay="CENTER" layoutX="865.0" layoutY="218.0" mnemonicParsing="false" onAction="#switchToIPhoneSearchPage" prefHeight="141.0" prefWidth="92.0" style="-fx-background-color: clear;">
+      <Button fx:id="iPhoneButton" contentDisplay="CENTER" layoutX="878.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToIPhoneSearchPage" prefHeight="141.0" prefWidth="92.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="141.0" fitWidth="92.0" preserveRatio="true">
                <Image url="@images/iPhone.png" />
@@ -47,14 +47,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="AirPodsButton" contentDisplay="CENTER" layoutX="519.0" layoutY="476.0" mnemonicParsing="false" onAction="#switchToAirPodsSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
+      <Button fx:id="AirPodsButton" contentDisplay="CENTER" layoutX="526.0" layoutY="489.0" mnemonicParsing="false" onAction="#switchToAirPodsSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="127.0" fitWidth="142.0" preserveRatio="true">
                <Image url="@images/airPods.png" />
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="ChargingCableButton" contentDisplay="CENTER" layoutX="850.0" layoutY="479.0" mnemonicParsing="false" onAction="#switchToChargingCableSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
+      <Button fx:id="ChargingCableButton" contentDisplay="CENTER" layoutX="853.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToChargingCableSearchPage" prefHeight="127.0" prefWidth="142.0" style="-fx-background-color: clear;">
          <graphic>
             <ImageView fitHeight="127.0" fitWidth="142.0" preserveRatio="true">
                <Image url="@images/chargingCable.png" />
@@ -66,12 +66,12 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="573.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iPad">
+      <Text layoutX="577.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iPad">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="895.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iPhone">
+      <Text layoutX="908.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="iPhone">
          <font>
             <Font size="16.0" />
          </font>
@@ -81,12 +81,12 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="562.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AirPods">
+      <Text layoutX="569.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AirPods">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="869.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charging Cable">
+      <Text layoutX="879.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charging Cable">
          <font>
             <Font size="16.0" />
          </font>
