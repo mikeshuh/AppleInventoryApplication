@@ -12,5 +12,7 @@ https://www.oracle.com/java/technologies/downloads/
 https://dev.mysql.com/downloads/mysql/
 ### Clone Repository
 Clone the repository into your IDE of choice. Ensure there is some form of Maven support, like IntelliJ for example. <br>
+### Database Connection
+Open DatabaseConnection.java and set `public static final String PASSWORD` to equal a String of your MySQL root passowrd.
 ### Run Program
-Run in Main.java to start application. <br>
+Save your changes and run the application through Main.java. <br>
