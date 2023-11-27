@@ -18,7 +18,7 @@
                 <Font size="27.0" />
             </font>
         </Button>
-        <Label fx:id="titleLabel" layoutX="440.0" layoutY="57.0" text="AirPods Search">
+        <Label fx:id="titleLabel" layoutX="450.0" layoutY="50.0" text="AirPods Search">
             <font>
                 <Font size="50.0" />
             </font>

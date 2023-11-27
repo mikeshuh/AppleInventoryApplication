@@ -18,7 +18,7 @@
                 <Font size="27.0" />
             </font>
         </Button>
-        <Label fx:id="titleLabel" layoutX="449.0" layoutY="52.0" text="AppleWatch Search">
+        <Label fx:id="titleLabel" layoutX="400.0" layoutY="50.0" text="Apple Watch Search">
             <font>
                 <Font size="50.0" />
             </font>

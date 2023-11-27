@@ -18,7 +18,7 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Label fx:id="titleLabel" layoutX="449.0" layoutY="52.0" text="iPhone Search">
+      <Label fx:id="titleLabel" layoutX="460.0" layoutY="50.0" text="iPhone Search">
          <font>
             <Font size="50.0" />
          </font>
