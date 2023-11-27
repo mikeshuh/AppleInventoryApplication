@@ -142,7 +142,7 @@ public class Main extends Application {
 
     public static void populateDatabase() {
         DatabaseConnection.executeSQL(
-                "INSERT INTO AppleInventory.Product (ProductName, Price) VALUES" +
+                "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
                         "('MacBook Air 13-inch M1 Space Gray', 999.00)," +
                         "('MacBook Air 13-inch M1 Silver', 999.00)," +
                         "('MacBook Air 13-inch M1 Gold', 999.00)," +

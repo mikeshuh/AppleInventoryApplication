@@ -26,9 +26,9 @@
       </Label>
       <TableView fx:id="shoppingCartTableView" layoutX="100.0" layoutY="100.0" prefHeight="500.0" prefWidth="1000.0">
         <columns>
-          <TableColumn fx:id="productColumn" minWidth="500.0" prefWidth="75.0" text="Product" />
-          <TableColumn fx:id="priceColumn" minWidth="400.0" prefWidth="75.0" text="Price" />
-            <TableColumn fx:id="removeColumn" minWidth="100.0" prefWidth="75.0" text="Remove" />
+          <TableColumn fx:id="productColumn" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" text="Product" />
+          <TableColumn fx:id="priceColumn" maxWidth="400.0" minWidth="400.0" prefWidth="400.0" text="Price" />
+            <TableColumn fx:id="removeColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Remove" />
         </columns>
       </TableView>
       <Button fx:id="checkoutButton" layoutX="1000.0" layoutY="625.0" mnemonicParsing="false" onAction="#handleCheckout" style="-fx-background-radius: 15 15 15 15;" text="Checkout">
