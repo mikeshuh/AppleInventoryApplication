@@ -76,6 +76,7 @@ public class AirPodsSearchController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     public void switchToHomePage (ActionEvent event) throws IOException {

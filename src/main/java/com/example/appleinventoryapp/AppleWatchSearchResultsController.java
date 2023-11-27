@@ -41,6 +41,7 @@ public class AppleWatchSearchResultsController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     public void switchToAppleWatchSearchPage (ActionEvent event) throws IOException {

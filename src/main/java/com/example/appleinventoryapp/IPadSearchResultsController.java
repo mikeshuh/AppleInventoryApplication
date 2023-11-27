@@ -41,6 +41,7 @@ public class IPadSearchResultsController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     public void switchToIPadSearchPage (ActionEvent event) throws IOException {

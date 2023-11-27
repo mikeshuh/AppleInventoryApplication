@@ -41,6 +41,7 @@ public class ChargingCableSearchResultsController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     public void switchToChargingCableSearchPage (ActionEvent event) throws IOException {
