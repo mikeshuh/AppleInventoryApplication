@@ -195,25 +195,25 @@ public class Main extends Application {
 
         DatabaseConnection.executeSQL(
                 "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
-                        "('iPad 9th generation Space Gray', 329.00)," +
-                        "('iPad 9th generation Silver', 329.00)," +
-                        "('iPad 10th generation Silver', 449.00)," +
-                        "('iPad 10th generation Pink', 449.00)," +
-                        "('iPad 10th generation Blue', 449.00)," +
-                        "('iPad 10th generation Yellow', 449.00)," +
-                        "('iPad Air 5th generation Space Gray', 599.00)," +
-                        "('iPad Air 5th generation Starlight', 599.00)," +
-                        "('iPad Air 5th generation Pink', 599.00)," +
-                        "('iPad Air 5th generation Purple', 599.00)," +
-                        "('iPad Air 5th generation Blue', 599.00)," +
-                        "('iPad Mini 6th generation Space Gray', 499.00)," +
-                        "('iPad Mini 6th generation Starlight', 499.00)," +
-                        "('iPad Mini 6th generation Pink', 499.00)," +
-                        "('iPad Mini 6th generation Purple', 499.00)," +
-                        "('iPad Pro 4th generation 11-inch Space Gray', 799.00)," +
-                        "('iPad Pro 4th generation 11-inch Silver', 799.00)," +
-                        "('iPad Pro 6th generation 12.9-inch Space Gray', 1099.00)," +
-                        "('iPad Pro 6th generation 12.9-inch Silver', 1099.00);"
+                        "('iPad 9th Generation Space Gray', 329.00)," +
+                        "('iPad 9th Generation Silver', 329.00)," +
+                        "('iPad 10th Generation Silver', 449.00)," +
+                        "('iPad 10th Generation Pink', 449.00)," +
+                        "('iPad 10th Generation Blue', 449.00)," +
+                        "('iPad 10th Generation Yellow', 449.00)," +
+                        "('iPad Air 5th Generation Space Gray', 599.00)," +
+                        "('iPad Air 5th Generation Starlight', 599.00)," +
+                        "('iPad Air 5th Generation Pink', 599.00)," +
+                        "('iPad Air 5th Generation Purple', 599.00)," +
+                        "('iPad Air 5th Generation Blue', 599.00)," +
+                        "('iPad Mini 6th Generation Space Gray', 499.00)," +
+                        "('iPad Mini 6th Generation Starlight', 499.00)," +
+                        "('iPad Mini 6th Generation Pink', 499.00)," +
+                        "('iPad Mini 6th Generation Purple', 499.00)," +
+                        "('iPad Pro 4th Generation 11-inch Space Gray', 799.00)," +
+                        "('iPad Pro 4th Generation 11-inch Silver', 799.00)," +
+                        "('iPad Pro 6th Generation 12.9-inch Space Gray', 1099.00)," +
+                        "('iPad Pro 6th Generation 12.9-inch Silver', 1099.00);"
         );
 
         DatabaseConnection.executeSQL(
