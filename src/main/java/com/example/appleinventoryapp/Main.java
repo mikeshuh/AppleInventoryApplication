@@ -48,6 +48,7 @@ public class Main extends Application {
                 + "    InvoiceID INT AUTO_INCREMENT PRIMARY KEY, "
                 + "    CustomerID INT NOT NULL, "
                 + "    TotalPrice DECIMAL(10, 2) NOT NULL, "
+                + "    Date DATE NOT NULL, "
                 + "    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)"
                 + ");"
         );
@@ -122,7 +123,7 @@ public class Main extends Application {
                         + "    ProductID INT NOT NULL UNIQUE, "
                         + "    Model VARCHAR(255) NOT NULL, "
                         + "    Chip VARCHAR(255) NOT NULL, "
-                        + "    Color VARCHAR(255), "
+                        + "    Color VARCHAR(255) NOT NULL, "
                         + "    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)"
                         + ");"
         );

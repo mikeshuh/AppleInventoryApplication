@@ -19,11 +19,20 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 public class ShoppingCartController {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    public static LocalDate getCurrentUtcDate() {
+        ZonedDateTime nowUtc = ZonedDateTime.now(ZoneId.of("UTC"));
+        return nowUtc.toLocalDate();
+    }
 
     private static ArrayList<String> cartProducts = new ArrayList<>();
     private static ArrayList<Double> cartProductPrices = new ArrayList<>();
@@ -132,7 +141,7 @@ public class ShoppingCartController {
 
         try {
             conn = DatabaseConnection.getConnection();
-            String sql = "INSERT INTO AppleInventory.Invoice (CustomerID, TotalPrice) VALUES (?, ?)";
+            String sql = "INSERT INTO AppleInventory.Invoice (CustomerID, TotalPrice, Date) VALUES (?, ?, '" + getCurrentUtcDate() + "')";
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pstmt.setInt(1, LoginController.getCustomerID());
