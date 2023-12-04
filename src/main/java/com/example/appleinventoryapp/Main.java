@@ -290,29 +290,29 @@ public class Main extends Application {
 
         DatabaseConnection.executeSQL(
                 "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
-                        "('Apple Watch SE 40 mm Midnight (Aluminum)', 279.00)," +
-                        "('Apple Watch SE 40 mm Starlight (Aluminum)', 279.00)," +
-                        "('Apple Watch SE 40 mm Silver (Aluminum)', 279.00)," +
-                        "('Apple Watch SE 44 mm Midnight (Aluminum)', 309.00)," +
-                        "('Apple Watch SE 44 mm Starlight (Aluminum)', 309.00)," +
-                        "('Apple Watch SE 44 mm Silver (Aluminum)', 309.00)," +
-                        "('Apple Watch Series 9 41 mm Midnight (Aluminum)', 399.00)," +
-                        "('Apple Watch Series 9 41 mm Starlight (Aluminum)', 399.00)," +
-                        "('Apple Watch Series 9 41 mm Silver (Aluminum)', 399.00)," +
-                        "('Apple Watch Series 9 41 mm Pink (Aluminum)', 399.00)," +
-                        "('Apple Watch Series 9 41 mm Red (Aluminum)', 399.00)," +
-                        "('Apple Watch Series 9 41 mm Graphite (Steel)', 699.00)," +
-                        "('Apple Watch Series 9 41 mm Silver (Steel)', 699.00)," +
-                        "('Apple Watch Series 9 41 mm Gold (Steel)', 699.00)," +
-                        "('Apple Watch Series 9 45 mm Midnight (Aluminum)', 429.00)," +
-                        "('Apple Watch Series 9 45 mm Starlight (Aluminum)', 429.00)," +
-                        "('Apple Watch Series 9 45 mm Silver (Aluminum)', 429.00)," +
-                        "('Apple Watch Series 9 45 mm Pink (Aluminum)', 429.00)," +
-                        "('Apple Watch Series 9 45 mm Red (Aluminum)', 429.00)," +
-                        "('Apple Watch Series 9 45 mm Graphite (Steel)', 749.00)," +
-                        "('Apple Watch Series 9 45 mm Silver (Steel)', 749.00)," +
-                        "('Apple Watch Series 9 45 mm Gold (Steel)', 749.00)," +
-                        "('Apple Watch Ultra 2 49 mm Natural (Titanium)', 799.00);"
+                        "('Apple Watch SE 40-mm Midnight (Aluminum)', 279.00)," +
+                        "('Apple Watch SE 40-mm Starlight (Aluminum)', 279.00)," +
+                        "('Apple Watch SE 40-mm Silver (Aluminum)', 279.00)," +
+                        "('Apple Watch SE 44-mm Midnight (Aluminum)', 309.00)," +
+                        "('Apple Watch SE 44-mm Starlight (Aluminum)', 309.00)," +
+                        "('Apple Watch SE 44-mm Silver (Aluminum)', 309.00)," +
+                        "('Apple Watch Series 9 41-mm Midnight (Aluminum)', 399.00)," +
+                        "('Apple Watch Series 9 41-mm Starlight (Aluminum)', 399.00)," +
+                        "('Apple Watch Series 9 41-mm Silver (Aluminum)', 399.00)," +
+                        "('Apple Watch Series 9 41-mm Pink (Aluminum)', 399.00)," +
+                        "('Apple Watch Series 9 41-mm Red (Aluminum)', 399.00)," +
+                        "('Apple Watch Series 9 41-mm Graphite (Steel)', 699.00)," +
+                        "('Apple Watch Series 9 41-mm Silver (Steel)', 699.00)," +
+                        "('Apple Watch Series 9 41-mm Gold (Steel)', 699.00)," +
+                        "('Apple Watch Series 9 45-mm Midnight (Aluminum)', 429.00)," +
+                        "('Apple Watch Series 9 45-mm Starlight (Aluminum)', 429.00)," +
+                        "('Apple Watch Series 9 45-mm Silver (Aluminum)', 429.00)," +
+                        "('Apple Watch Series 9 45-mm Pink (Aluminum)', 429.00)," +
+                        "('Apple Watch Series 9 45-mm Red (Aluminum)', 429.00)," +
+                        "('Apple Watch Series 9 45-mm Graphite (Steel)', 749.00)," +
+                        "('Apple Watch Series 9 45-mm Silver (Steel)', 749.00)," +
+                        "('Apple Watch Series 9 45-mm Gold (Steel)', 749.00)," +
+                        "('Apple Watch Ultra 2 49-mm Natural (Titanium)', 799.00);"
         );
 
         DatabaseConnection.executeSQL(
@@ -372,11 +372,11 @@ public class Main extends Application {
 
         DatabaseConnection.executeSQL(
                 "INSERT IGNORE INTO AppleInventory.Product (ProductName, Price) VALUES" +
-                        "('USB-C to Lightning Cable 1 m', 19.00)," +
-                        "('USB-C to Lightning Cable 2 m', 29.00)," +
-                        "('USB-C to USB-C Cable 1 m', 19.00)," +
-                        "('USB-C to USB-C Cable 2 m', 29.00)," +
-                        "('USB-C to MagSafe Charger 2 m', 49.00);"
+                        "('USB-C to Lightning Cable 1-m', 19.00)," +
+                        "('USB-C to Lightning Cable 2-m', 29.00)," +
+                        "('USB-C to USB-C Cable 1-m', 19.00)," +
+                        "('USB-C to USB-C Cable 2-m', 29.00)," +
+                        "('USB-C to MagSafe Charger 2-m', 49.00);"
         );
 
         DatabaseConnection.executeSQL(
