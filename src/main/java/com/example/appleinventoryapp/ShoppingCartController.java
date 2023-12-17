@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -36,6 +38,8 @@ public class ShoppingCartController {
 
     private static ArrayList<String> cartProducts = new ArrayList<>();
     private static ArrayList<Double> cartProductPrices = new ArrayList<>();
+    private static Map<String, Integer> cartProductQuantities = new HashMap<>();
+
 
     public static ArrayList<String> getCartProductss() {
         return new ArrayList<>(cartProducts);
@@ -43,6 +47,7 @@ public class ShoppingCartController {
 
     public static void addCartProduct(String product) {
         cartProducts.add(product);
+        cartProductQuantities.put(product, cartProductQuantities.getOrDefault(product, 0) + 1);
     }
     public static void addCartProductPrices(double productPrice) {
         cartProductPrices.add(productPrice);
@@ -65,7 +70,15 @@ public class ShoppingCartController {
         }
 
         shoppingCartTableView.getItems().remove(item);
+
+        int newQuantity = cartProductQuantities.get(item.getProductName()) - 1;
+        if (newQuantity > 0) {
+            cartProductQuantities.put(item.getProductName(), newQuantity);
+        } else {
+            cartProductQuantities.remove(item.getProductName());
+        }
     }
+
 
     public void initialize() {
         productColumn.setCellValueFactory(new PropertyValueFactory<>("ProductName"));
@@ -117,21 +130,24 @@ public class ShoppingCartController {
 
     @FXML
     private void handleCheckout(ActionEvent event) {
-        if(!cartProducts.isEmpty()){
+        if (!cartProducts.isEmpty()) {
             double totalPrice = cartProductPrices.stream().mapToDouble(Double::doubleValue).sum();
+            int invoiceId = insertInvoiceAndGetId(totalPrice); // Create the invoice once
 
-            int invoiceId = insertInvoiceAndGetId(totalPrice);
-
-            for (String productName : cartProducts) {
+            for (Map.Entry<String, Integer> entry : cartProductQuantities.entrySet()) {
+                String productName = entry.getKey();
+                int quantity = entry.getValue();
                 int productId = getProductIdByName(productName);
-                insertIntoPurchasedProduct(invoiceId, productId);
+                insertIntoPurchasedProduct(invoiceId, productId, quantity);
             }
 
             cartProducts.clear();
             cartProductPrices.clear();
+            cartProductQuantities.clear();
             shoppingCartTableView.getItems().clear();
         }
     }
+
 
     private int insertInvoiceAndGetId(double totalPrice) {
         Connection conn = null;
@@ -191,21 +207,23 @@ public class ShoppingCartController {
         return productId;
     }
 
-    private void insertIntoPurchasedProduct(int invoiceId, int productId) {
+    private void insertIntoPurchasedProduct(int invoiceId, int productId, int quantity) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             connection = DatabaseConnection.getConnection();
-            String sql = "INSERT INTO AppleInventory.PurchasedProduct (InvoiceID, ProductID) VALUES (?, ?)";
+            String sql = "INSERT INTO AppleInventory.PurchasedProduct (InvoiceID, ProductID, Quantity) VALUES (?, ?, ?)";
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, invoiceId);
             preparedStatement.setInt(2, productId);
+            preparedStatement.setInt(3, quantity);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }

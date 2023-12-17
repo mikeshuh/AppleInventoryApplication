@@ -58,6 +58,7 @@ public class Main extends Application {
                 "CREATE TABLE IF NOT EXISTS AppleInventory.PurchasedProduct ("
                 + "    InvoiceID INT NOT NULL, "
                 + "    ProductID INT NOT NULL, "
+                + "    Quantity INT NOT NULL, "
                 + "    PRIMARY KEY (InvoiceID, ProductID), "
                 + "    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID), "
                 + "    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)"
